@@ -13,7 +13,7 @@ const Main = () => {
       <div className='main'>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail/:product_id" element={<Detail />} />
           <Route path="/about" element={<About />} />
           <Route path="/account/:activeTab" element={<Account />} />
         </Routes>

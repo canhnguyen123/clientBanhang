@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function Home() {
   const [productList, setProductList] = useState([]);
-
+ 
   useEffect(() => {
     const apiUrl = 'http://localhost:4000/product/';
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -14,8 +14,26 @@ function FormExample() {
     const [validated, setValidated] = useState(false);
     const [toogle, settoogle] = useState(false);
     const tooglePass = () => {
-        settoogle(!toogle);  // Toggles the 'toogle' state between true and false
+        settoogle(!toogle);  
     }
+    useEffect(() => {
+        const userInfo = localStorage.getItem('userInfo');
+        if (userInfo) {
+            toast.warn('Đã đăng nhập không thể vào trang', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            setTimeout(() => {
+                navigate('/');
+            }, 1000);
+        } 
+      }, []);
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
@@ -35,8 +53,8 @@ function FormExample() {
             const response = await axios.post('http://localhost:4000/user/login', userData);
 
             if (response.data.status === 'success') {
-               
-                toast.success(response.data.user_id, {
+               console.log(response.data.token)
+                toast.success("Đăng nhập thành công", {
                     position: "top-right",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -50,12 +68,11 @@ function FormExample() {
                 const user_id = response.data.user_id
                 axios.get(`http://localhost:4000/user/deaitl/${user_id}`)
                     .then((response) => {
-                        // Xử lý dữ liệu người dùng từ response.data
-                        const userInfo = response.data;
-                        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-                        console.log('Thông tin người dùng:', userInfo);
-
-                        // Sau đó, bạn có thể lưu thông tin người dùng vào localStorage hoặc global state (Redux) để truy cập ở trang chủ
+                        if(response.data.status==='success'){
+                            const userInfo = response.data.results;
+                            localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                        }
+                      
                     })
                     .catch((error) => {
                         console.error('Lỗi khi lấy thông tin người dùng:', error);
