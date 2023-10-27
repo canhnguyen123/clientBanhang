@@ -17,7 +17,7 @@ function FormExample() {
         settoogle(!toogle);  
     }
     useEffect(() => {
-        const userInfo = localStorage.getItem('userInfo');
+        const userInfo = localStorage.getItem('user_id');
         if (userInfo) {
             toast.warn('Đã đăng nhập không thể vào trang', {
                 position: "top-right",
@@ -53,8 +53,7 @@ function FormExample() {
             const response = await axios.post('http://localhost:4000/user/login', userData);
 
             if (response.data.status === 'success') {
-               console.log(response.data.token)
-                toast.success("Đăng nhập thành công", {
+                toast.success(response.data.mess, {
                     position: "top-right",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -66,17 +65,9 @@ function FormExample() {
 
                 });
                 const user_id = response.data.user_id
-                axios.get(`http://localhost:4000/user/deaitl/${user_id}`)
-                    .then((response) => {
-                        if(response.data.status==='success'){
-                            const userInfo = response.data.results;
-                            localStorage.setItem('userInfo', JSON.stringify(userInfo));
-                        }
-                      
-                    })
-                    .catch((error) => {
-                        console.error('Lỗi khi lấy thông tin người dùng:', error);
-                    });
+                const token = response.data.token
+                localStorage.setItem('user_id',user_id);
+                localStorage.setItem('token',token);
                 setTimeout(() => {
                     navigate('/');
                 }, 2000);

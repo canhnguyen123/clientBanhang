@@ -510,7 +510,12 @@
  
   color: white;
 }
-
+.main-95{
+  width: 95%;
+  margin: 0 5%;
+  min-width: 1000px;
+  padding-top: 80px;
+}
 
 .card-shopping-header i{
   font-size: 20px;
@@ -706,9 +711,9 @@ button.accordion-button:focus{
   top: 45px;
   right:0;
   border-radius: 20px;
-  width: 200px;
-  height: 210px;
-  padding: 15px 5px;
+  width: 250px;
+  height: 300px;
+  padding: 20px 5px 40px 5px;
   background-color: #ff6d60a8;
   transition: 0.5s ease-in-out;
 }
@@ -733,6 +738,12 @@ button.accordion-button:focus{
   transition: 0.5s ease-in-out;
 }
 .cart-box-item:hover span{
+  color: black;
+}
+.cart-box-item:hover input{
+  color: black;
+}
+.cart-box-item:hover i.delete-cart{
   color: black;
 }
 .cart-box-item img{
@@ -776,11 +787,122 @@ button.accordion-button:focus{
   position: absolute;
   right: 5px;
 }
-.delete-cart{
+i.delete-cart{
   top: 50%;
   transform: translateY(-50%);
   transition: .5s ease-in-out;
 }
 .cart-box-item:hover i.delete-car{
   color: black;
+}
+.list-case{
+  padding-top: 80px;
+  width: 90%;
+  margin: 0 5%;
+  min-width: 1000px;
+}
+.list-category{
+  margin-top: 20px;
+  padding-left: 200px;
+}
+.item-category{
+  width: 200px;
+  height: 60px;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+.item-category span{
+  font-size: 20px;
+  font-weight: 500;
+  transition: .5s ease-in-out;
+}
+.item-category.active{
+  background-color: #ff6c60;
+}
+
+.item-category.active span{
+  color: white;
+}
+.list-main-menu{
+  width: 100%;
+  display: flex;
+}
+.list-phanloai{
+  width: 200px;
+  flex-shrink: 0;
+  
+}
+.item-phanloai{
+  width: 100%;
+  padding: 20px 25px;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+.item-phanloai.active{
+  background-color: #ff6c60;
+}
+.item-phanloai.active span{
+  color: white;
+}
+.list-theloai{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4,25%);
+  grid-gap: 10px;
+  padding: 30px 20px;
+}
+.list-theloai a{
+  text-decoration: none;
+  color: black;
+}
+.item-theloai{
+  width: 100%;
+}
+.item-theloai .card{
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.item-theloai .card .card-img-top{
+  width: 100%;
+  height: 300px;
+}
+.item-theloai .card img{
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+.text-cart-box{
+  width: 100%; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+.see-all-cart{
+  text-decoration: none;
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
+  transition: .5s ease-in-out;
+}
+.titel-center{
+  margin: 30px auto;
+  text-align: center;
+  color: #ff6c60;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 520;
+  letter-spacing: 1px;
+}
+.list-case-product {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 10px;
+}
+
+.item-case-product {
+  max-width: 350px;
+  width: 100%;
+  min-width: 230px;
 }

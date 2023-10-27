@@ -122,7 +122,6 @@ function Deatil() {
               progress: undefined,
               theme: "colored",
              });
-        
         }
         else{
           alert(response.data.mess)

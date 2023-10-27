@@ -12,7 +12,7 @@ function ItemBoxProduct(props) {
         currency: 'VND'
     }).format(price);
       return (
-        <Card className='item-product' style={{ width: '18rem' }} data-id={product_id}>
+        <Card className='item-product' data-id={product_id}>
             <Card.Img variant="top" src={link} />
             <Card.Body className='infro-product'>
                 <Card.Title>{name}</Card.Title>
