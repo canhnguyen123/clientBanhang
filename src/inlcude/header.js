@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Dropdown from 'react-bootstrap/Dropdown';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -24,19 +22,21 @@ function BasicExample() {
     if (user_id) {
       setUser_id(user_id);
     }
-    const apiUrl = `http://localhost:4000/cart/get-list-cart-3/${user_id}`;
-    axios
-      .get(apiUrl)
-      .then(response => {
-        if (response.data.results) {
-          setlistCard(response.data.results);
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching products:', error);
-      });
-  }, []);
-  
+    loadAPICart();
+  }, [user_id]);
+    const loadAPICart=()=>{
+      const apiUrl = `http://localhost:4000/cart/get-list-cart-3/${user_id}`;
+      axios
+        .get(apiUrl)
+        .then(response => {
+          if (response.data.results) {
+            setlistCard(response.data.results);
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching products:', error);
+        });
+    }
     const handDecrease = () => {
     if (quantity > 1) {
       setQuantiti(quantity - 1);
@@ -47,6 +47,10 @@ function BasicExample() {
     setQuantiti(quantity + 1);
     setNumberInput(quantity + 1); // Update the input value
   };
+
+  useEffect(()=>{
+    console.log("hahaha")
+  },[listCard.length])
 
   const checkNumber = (e) => {
     const value = e.target.value;
@@ -113,7 +117,7 @@ function BasicExample() {
                   </div>
                 )
               })}
-              <Link to="/" className='see-all-cart'>Xem tất cả <i class="fa-solid fa-angles-right"></i></Link>
+              <Link to="/cart" className='see-all-cart'>Xem tất cả <i class="fa-solid fa-angles-right"></i></Link>
             </div>
           </div>
 

@@ -7,6 +7,7 @@ import Account from './main/account/account';
 import Detail from './main/deatil/deatil'; 
 import Case from './main/case/caseProduct';
 import Cart from './main/cart/listCart';
+import Payying from './main/payying/payying';
 const Main = () => {
   const location = useLocation();
 
@@ -21,6 +22,7 @@ const Main = () => {
           <Route path="/detail/:product_id" element={<Detail />} />
           <Route path="/about" element={<About />} />
           <Route path="/account/:activeTab" element={<Account />} />
+          <Route path="/payying" element={<Payying />} />
         </Routes>
       </div>
     </div>

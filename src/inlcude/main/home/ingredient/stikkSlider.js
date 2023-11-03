@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Virtual, Navigation, Pagination } from 'swiper/modules';
+import { Virtual, Navigation, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ItemBoxTheLoai from '../../../component/itemBoxTheLoai';
 import axios from 'axios';
@@ -28,14 +28,28 @@ export default function App() {
     <div className='mg-50'>
       <div className='titel-session flex_center'><h4>Các thể loại bán chạy</h4></div>
       <Swiper
-        modules={[Virtual, Navigation]}
-        onSwiper={setSwiperRef}
-        slidesPerView={3}
-        centeredSlides={false}
-        spaceBetween={30}
+        modules={[Virtual, Navigation, Autoplay]}  
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        breakpoints={{
+          960: {
+            spaceBetween: 12,
+            slidesPerView: 3,
+          },
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 12,
+          },
+        }}
+  
+        
+       
         navigation={true}
-        initialSlide={0}
-        virtual
+        
+        
       >
         {images.map((image, index) => (
           <SwiperSlide key={image.id} virtualIndex={index}>

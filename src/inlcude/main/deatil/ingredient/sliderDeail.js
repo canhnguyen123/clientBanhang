@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { EffectFade, Navigation, Pagination,Autoplay } from 'swiper/modules';
 
 export default function App(props) {
   const { listImg } = props;
@@ -14,7 +13,11 @@ export default function App(props) {
         pagination={{
           clickable: true,
         }}
-        modules={[EffectFade, Navigation, Pagination]}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        modules={[EffectFade, Navigation, Pagination,Autoplay]}
         className="mySwiper slider-img-deatil"
       > {listImg.map((image, index) => (
         <SwiperSlide>

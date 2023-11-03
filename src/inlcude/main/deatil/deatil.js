@@ -19,13 +19,11 @@ function Deatil() {
   const [user_id, setUser_id] = useState(null);
 
   useEffect(() => {
-    const userInfo = localStorage.getItem('userInfo');
-    if (userInfo) {
-      const infroUser = JSON.parse(userInfo);
-      setUser_id(infroUser.user_id);
-
+    const user_id = localStorage.getItem('user_id');
+    if (user_id) {
+        setUser_id(user_id);
     }
-  }, []);
+  }, [user_id]);
   useEffect(() => {
     const apiUrl = 'http://localhost:4000/product/deatil/' + product_id;
     axios
@@ -100,7 +98,6 @@ function Deatil() {
       });
     }
     else {
-      console.log('Đủ điều kiện')
       const apiUrl = `http://localhost:4000/cart/add/${user_id}`;
       console.log(apiUrl)
       const data = {
@@ -130,23 +127,15 @@ function Deatil() {
         console.error('Error posting to the API:', error);
       }
       
-    }
-
-
-
-  };
-
-
-
-
-  return (
-    <section className='row mg-t-85'>
+    }};
+return (
+    <section className=' row mg-t-85'>
       {productList.map((product) => (
-        <div className='row'>
-          <div className='col-6'>
+        <div className='row deatil-section'>
+          <div className='col-xl-6 col-sm-12 deatil-section-img'>
             <SliderDeail listImg={product.images} />
           </div>
-          <div className='col-6'>
+          <div className='col-xl-6 col-sm-12 deatil-section-infro'>
             <div key={product.id} className='deatil-context'>
               <h3>{product.name}</h3>
               <h4 className='context-span'>Mã sản phẩm : {product.code}</h4>

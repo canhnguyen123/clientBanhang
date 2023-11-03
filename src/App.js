@@ -1,6 +1,7 @@
 import Header from "./inlcude/header"
-import Main from "./inlcude/main"
-import './App.css';
+import Main from "./inlcude/main";
+import Footer from "./inlcude/footer"
+import './css/App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'swiper/css';
@@ -14,6 +15,7 @@ function App() {
         <ToastContainer />
       <Header/>
       <Main/>
+      <Footer/>
     </div>
   );
 }
